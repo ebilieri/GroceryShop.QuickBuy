@@ -3,7 +3,7 @@ Repositório que armazena os arquvvos do aplicativo criado no curso ASP NET Core
 
 Criar uma soluções simples utilizando as seguintes tecnologias:
 
-    **Visual Studio 2019**
+    __Visual Studio 2019__
 
     Linguagem de Programação C# ( Para quem já tem conhecimentos consideráveis da linguagem)
 
