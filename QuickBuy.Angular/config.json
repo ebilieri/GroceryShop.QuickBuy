@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "QuickByConnection": "server=localhost;userid=root;password=mysql@2019;database=QuickBuyAngukarDB"
+  }
+}
