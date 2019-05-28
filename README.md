@@ -1,9 +1,10 @@
 # Angular.QuickBuy
-Repositório que armazena os arquvvos do aplicativo criado no curso ASP NET Core com Angular: Desenvolvimento Web Fullstack
+Repositório que armazena os arquivos do aplicativo criado no curso ASP NET Core com Angular: Desenvolvimento Web Fullstack
+https://www.udemy.com/desenvolvimento-aspnet-core-angular
 
 Criar uma soluções simples utilizando as seguintes tecnologias:
 
-    __Visual Studio 2019__
+    Visual Studio 2019
 
     Linguagem de Programação C# ( Para quem já tem conhecimentos consideráveis da linguagem)
 
@@ -42,7 +43,3 @@ Há algum requisito ou pré-requisito para o curso?
     Conexão com a internet
     Conhecimentos Básicos da Linguagem de programação C#
     Paciência e Força de Vontade
-
-Para quem é este curso:
-
-    Embora os mais experientes sejam bem vindos, o curso tem o cuidado de ensinar os iniciantes com pouca experiência.
