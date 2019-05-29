@@ -9,7 +9,20 @@ namespace QuickBuy.Repositorio.Config
     {
         public void Configure(EntityTypeBuilder<Pedido> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(u => u.Id);
+
+            builder.Property(u => u.DataPedido).IsRequired();
+
+            builder.Property(u => u.CEP).IsRequired().HasMaxLength(20);
+
+            builder.Property(u => u.Estado).IsRequired().HasMaxLength(50);
+
+            builder.Property(u => u.Cidade).IsRequired().HasMaxLength(100);
+
+            builder.Property(u => u.EnderecoCompleto).IsRequired().HasMaxLength(200);
+
+            // Mapeamento Relacionamento Forma de Pagamento ( um para um)
+            builder.HasOne(u => u.FormaPagamento);
         }
     }
 }
