@@ -6,10 +6,10 @@ using System;
 namespace QuickBuy.Angular.Controllers
 {
     [Route("api/[controller]")]
-    public class ProdutoContoller : Controller
+    public class ProdutoController : Controller
     {
         private readonly IProdutoRepositorio _produtoRepositorio;
-        public ProdutoContoller(IProdutoRepositorio produtoRepositorio)
+        public ProdutoController(IProdutoRepositorio produtoRepositorio)
         {
             _produtoRepositorio = produtoRepositorio;
         }
