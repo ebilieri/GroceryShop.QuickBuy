@@ -32,7 +32,7 @@ namespace QuickBuy.Angular.Controllers
         public IActionResult Post([FromBody] Produto produto)
         {
             try
-            {
+            {                
                 _produtoRepositorio.Adicionar(produto);
                 return Created("api/produto", produto);
             }

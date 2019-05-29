@@ -9,6 +9,8 @@
 
         public override void Validate()
         {
+            LimparMensagemValidacao();
+
             if (Preco <= 0)
                 AdicionarMensagem("Informe um Preço valido para o Produto");
 

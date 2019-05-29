@@ -9,6 +9,8 @@
 
         public override void Validate()
         {
+            LimparMensagemValidacao();
+
             if (ProdutoId == 0)
                 AdicionarMensagem("Informe o Produto");
         }

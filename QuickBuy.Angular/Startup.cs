@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using QuickBuy.Dominio.Contratos;
 using QuickBuy.Repositorio.Contexto;
 using QuickBuy.Repositorio.Repositorios;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace QuickBuy.Angular
 {
@@ -46,6 +47,24 @@ namespace QuickBuy.Angular
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
 
 
+            // Sweggar configuration
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1",
+                    new Info
+                    {
+                        Title = "QuickBuy Angular APP",
+                        Version = "v1",
+                        Description = "Aplicação Angular com ASP.Net Core",
+                        Contact = new Contact
+                        {
+                            Name = "Emerson Bilieri Claudelino",
+                            Url = "https://github.com/ebilieri"
+                        }
+                    });
+            });
+
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -70,6 +89,16 @@ namespace QuickBuy.Angular
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "QuickBuy Angular V1");
+            });
 
             app.UseMvc(routes =>
             {

@@ -17,6 +17,8 @@ namespace QuickBuy.Dominio.Entidades
 
         public override void Validate()
         {
+            LimparMensagemValidacao();
+
             if (string.IsNullOrEmpty(Email))
                 AdicionarMensagem("Email é de preenchimento obrigatório");
 
