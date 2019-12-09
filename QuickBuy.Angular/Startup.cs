@@ -120,8 +120,8 @@ namespace QuickBuy.Angular
                      * Comentar linha para executar o angular diretamente do angulur cli (ng build)
                      * npm start - executar app
                      */
-                    //spa.UseAngularCliServer(npmScript: "start");
-                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200/");
+                    spa.UseAngularCliServer(npmScript: "start");
+                    //spa.UseProxyToSpaDevelopmentServer("http://localhost:4200/");
                 }
             });
         }
