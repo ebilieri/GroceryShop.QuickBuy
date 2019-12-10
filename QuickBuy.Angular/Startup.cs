@@ -18,12 +18,8 @@ namespace QuickBuy.Angular
         public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
-        {
-            var builder = new ConfigurationBuilder();
-
-            builder.AddJsonFile("config.json", optional: false, reloadOnChange: true);
-
-            Configuration = builder.Build();
+        {           
+            Configuration = configuration;
         }
 
 

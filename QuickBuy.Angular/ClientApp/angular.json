@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "WebApplication3": {
+    "QuickBuy.Angular": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -52,18 +52,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "WebApplication3:build"
+            "browserTarget": "QuickBuy.Angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "WebApplication3:build:production"
+              "browserTarget": "QuickBuy.Angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "WebApplication3:build"
+            "browserTarget": "QuickBuy.Angular:build"
           }
         },
         "test": {
@@ -122,7 +122,7 @@
         }
       }
     },
-    "WebApplication3-e2e": {
+    "QuickBuy.Angular-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -130,7 +130,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "WebApplication3:serve"
+            "devServerTarget": "QuickBuy.Angular:serve"
           }
         },
         "lint": {
@@ -145,5 +145,5 @@
       }
     }
   },
-  "defaultProject": "WebApplication3"
+  "defaultProject": "QuickBuy.Angular"
 }

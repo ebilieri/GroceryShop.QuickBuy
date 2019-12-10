@@ -1,11 +1,11 @@
 {
-  "name": "WebApplication3",
+  "name": "QuickBuy.Angular",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:ssr": "ng run WebApplication3:server:dev",
+    "build:ssr": "ng run QuickBuy.Angular:server:dev",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
