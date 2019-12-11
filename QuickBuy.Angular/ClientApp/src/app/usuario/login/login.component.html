@@ -1,0 +1,44 @@
+<div class="text-center">
+  <form class="form-signin">
+    <img class="mb-4" src="/assets/grocery-shop-logo-300x275.png" alt="Grocery Shop" width="150">
+    <h1 class="h3 mb-3 font-weight-normal login">Login do Cliente</h1>
+
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input type="email" id="inputEmail" name="email" class="form-control mb-1"
+           placeholder="Informe o seu email"
+           [(ngModel)]="usuario.email"
+           #email="ngModel"
+           email required autofocus />
+
+    <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+      <div *ngIf="email.errors.required">
+        Email é de preenchimento obrigatório
+      </div>
+      <div *ngIf="email.errors.email">
+        Email é de preenchimento obrigatório
+      </div>
+    </div>
+
+    <label for="inputSenha" class="sr-only">Senha</label>
+    <input type="password" id="inputSenha" name="senha" class="form-control"
+           placeholder="Digite sua senha"
+           [(ngModel)]="usuario.senha"
+           #senha="ngModel"
+           required />
+
+    <div class="alert alert-danger" *ngIf="senha.invalid && (senha.dirty || senha.touched)">
+      <div *ngIf="senha.errors.required">
+        Senha é de preenchimento obrigatório
+      </div>
+    </div>
+
+    <div class="checkbox mb-2">
+      <label>
+        <input type="checkbox" value="remember-me">Lembrar-me
+      </label>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="entrar()">Entrar</button>
+
+  </form>
+</div>
