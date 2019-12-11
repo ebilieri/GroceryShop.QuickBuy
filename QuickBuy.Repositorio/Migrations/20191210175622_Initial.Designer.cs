@@ -9,14 +9,14 @@ using QuickBuy.Repositorio.Contexto;
 namespace QuickBuy.Repositorio.Migrations
 {
     [DbContext(typeof(QuickBuyContexto))]
-    [Migration("20190528214445_PrimeiraVersao")]
-    partial class PrimeiraVersao
+    [Migration("20191210175622_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("QuickBuy.Dominio.Entidades.ItemPedido", b =>
@@ -34,7 +34,7 @@ namespace QuickBuy.Repositorio.Migrations
 
                     b.HasIndex("PedidoId");
 
-                    b.ToTable("ItensPedido");
+                    b.ToTable("ItensPedidos");
                 });
 
             modelBuilder.Entity("QuickBuy.Dominio.Entidades.Pedido", b =>
@@ -138,6 +138,26 @@ namespace QuickBuy.Repositorio.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("FormaPagamentos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Descricao = "Forma de pagamento Boleto",
+                            Nome = "Boleto"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Descricao = "Forma de pagamento Cartão de Crédito",
+                            Nome = "Cartão de Crédito"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Descricao = "Forma de pagamento Depósito",
+                            Nome = "Depósito"
+                        });
                 });
 
             modelBuilder.Entity("QuickBuy.Dominio.Entidades.ItemPedido", b =>

@@ -27,17 +27,20 @@ namespace QuickBuy.Dominio.Entidades
         /// <summary>
         /// Pedido deve ter um ou mais itens
         /// </summary>
-        public virtual ICollection<ItemPedido> ItensPedido { get; set; }
+        public virtual ICollection<ItemPedido> ItensPedidos { get; set; }
 
         public override void Validate()
         {
             LimparMensagemValidacao();
 
-            if (!ItensPedido.Any())
+            if (!ItensPedidos.Any())
                 AdicionarMensagem("Crítica - Pedido deve conter pelo menos 1 item");
 
             if (string.IsNullOrEmpty(CEP))
                 AdicionarMensagem("CEP é de preenchimento obrigatório");
+
+            if (FormaPagamentoId <= 0)
+                AdicionarMensagem("Forma de pagamento não informada");
 
         }
     }

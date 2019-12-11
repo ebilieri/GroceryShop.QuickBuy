@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QuickBuy.Repositorio.Migrations
 {
-    public partial class PrimeiraVersao : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -87,7 +87,7 @@ namespace QuickBuy.Repositorio.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ItensPedido",
+                name: "ItensPedidos",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -98,18 +98,33 @@ namespace QuickBuy.Repositorio.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ItensPedido", x => x.Id);
+                    table.PrimaryKey("PK_ItensPedidos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ItensPedido_Pedidos_PedidoId",
+                        name: "FK_ItensPedidos_Pedidos_PedidoId",
                         column: x => x.PedidoId,
                         principalTable: "Pedidos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "FormaPagamentos",
+                columns: new[] { "Id", "Descricao", "Nome" },
+                values: new object[] { 1, "Forma de pagamento Boleto", "Boleto" });
+
+            migrationBuilder.InsertData(
+                table: "FormaPagamentos",
+                columns: new[] { "Id", "Descricao", "Nome" },
+                values: new object[] { 2, "Forma de pagamento Cartão de Crédito", "Cartão de Crédito" });
+
+            migrationBuilder.InsertData(
+                table: "FormaPagamentos",
+                columns: new[] { "Id", "Descricao", "Nome" },
+                values: new object[] { 3, "Forma de pagamento Depósito", "Depósito" });
+
             migrationBuilder.CreateIndex(
-                name: "IX_ItensPedido_PedidoId",
-                table: "ItensPedido",
+                name: "IX_ItensPedidos_PedidoId",
+                table: "ItensPedidos",
                 column: "PedidoId");
 
             migrationBuilder.CreateIndex(
@@ -126,7 +141,7 @@ namespace QuickBuy.Repositorio.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ItensPedido");
+                name: "ItensPedidos");
 
             migrationBuilder.DropTable(
                 name: "Produtos");

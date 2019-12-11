@@ -13,6 +13,9 @@
 
             if (ProdutoId == 0)
                 AdicionarMensagem("Informe o Produto");
+
+            if (Quantidade <= 0)
+                AdicionarMensagem("Quantidade não informada");
         }
     }
 }
