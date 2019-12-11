@@ -4,7 +4,12 @@
     <h1 class="h3 mb-3 font-weight-normal login">Login do Cliente</h1>
 
     <label for="inputEmail" class="sr-only">Email</label>
-    <input type="email" id="inputEmail" name="email" class="form-control mb-1"
+    <input type="email" id="inputEmail" name="email"
+           class="form-control mb-1"
+           [ngClass]="{
+            'is-invalid':email.invalid && (email.dirty || email.touched),
+            'is-valid':email.valid && (email.dirty || email.touched)
+           }"
            placeholder="Informe o seu email"
            [(ngModel)]="usuario.email"
            #email="ngModel"
@@ -20,7 +25,12 @@
     </div>
 
     <label for="inputSenha" class="sr-only">Senha</label>
-    <input type="password" id="inputSenha" name="senha" class="form-control"
+    <input type="password" id="inputSenha" name="senha"
+           class="form-control"
+           [ngClass]="{
+            'is-invalid':senha.invalid && (senha.dirty || senha.touched),
+            'is-valid':senha.valid && (senha.dirty || senha.touched)
+           }"
            placeholder="Digite sua senha"
            [(ngModel)]="usuario.senha"
            #senha="ngModel"
@@ -34,7 +44,7 @@
 
     <div class="checkbox mb-2">
       <label>
-        <input type="checkbox" value="remember-me">Lembrar-me
+        <input type="checkbox" value="lembrarMe" name="lembrarMe">Lembrar-me
       </label>
     </div>
 
