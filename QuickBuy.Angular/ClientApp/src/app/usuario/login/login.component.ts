@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Usuario } from '../../modelo/usuario';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UsuarioServico } from '../../servicos/usuario/usuario.servico';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +13,9 @@ export class LoginComponent implements OnInit {
 
   public usuario;
   public returnUrl: string;
+  public mensagem: string;
 
-  constructor(private router: Router, private activatedRouter: ActivatedRoute) {
+  constructor(private router: Router, private activatedRouter: ActivatedRoute, private usuarioServico: UsuarioServico) {
 
   }
 
@@ -27,11 +29,31 @@ export class LoginComponent implements OnInit {
   }
 
   // Efetuar login no sistema
-  entrar() {
+  entrar(): void {
+    // chamar servico/api para validar usuario e senha
+    this.usuarioServico.verificarUsuario(this.usuario)
+      .subscribe(
+        data => {
+          // execução com sucesso
+          var retornoUsuario: Usuario;
+          retornoUsuario = data;
+          sessionStorage.setItem("usuario-autenticado", "1");
+          sessionStorage.setItem("usuario-email", retornoUsuario.email);
 
-    if (this.usuario.email == "ebilieri@gmail.com" && this.usuario.senha == "1234") {
-      sessionStorage.setItem("usuario-autenticado", "1");
-      this.router.navigate([this.returnUrl]);
-    }
+          // redirecionar para home ou pagina acessada
+          if (this.returnUrl == null) {
+            this.router.navigate(['/']);
+          } else {
+            this.router.navigate([this.returnUrl]);
+          }
+
+          //console.log(data);
+        },
+        erro => {
+          // erro-falha ao executar operação
+          this.mensagem = erro.error;
+          console.log(erro.error);
+        }
+      );
   }
 }
