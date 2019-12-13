@@ -21,17 +21,17 @@ export class NavMenuComponent {
     this.isExpanded = !this.isExpanded;
   }
 
+  // Verificae se o usuario está autenticado
   public usuarioAutenticado(): boolean {
     var autenticado = sessionStorage.getItem("usuario-autenticado");
     if (autenticado == "1") {
-      // se usuaria autenticado
       return true;
     }
     return false;
   }
 
   sair() {
-    sessionStorage.setItem("usuario-autenticado", "0");
+    sessionStorage.setItem("usuario-autenticado", "");
     this.router.navigate(['/']);
   }
 }

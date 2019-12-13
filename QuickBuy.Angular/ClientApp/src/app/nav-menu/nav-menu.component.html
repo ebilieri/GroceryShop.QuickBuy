@@ -25,7 +25,7 @@
             <a class="nav-link text-dark" [routerLink]='["/entrar"]'>Entrar</a>
           </li>
           <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="usuarioAutenticado()">
-            <a class="nav-link text-dark" [routerLink]='[""]' (click)="sair()">Sair</a>
+            <a class="nav-item nav-link text-dark" [routerLink]='[""]' (click)="sair()">Sair</a>
           </li>
         </ul>
       </div>
