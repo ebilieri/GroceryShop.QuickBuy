@@ -33,12 +33,13 @@ export class LoginComponent implements OnInit {
     // chamar servico/api para validar usuario e senha
     this.usuarioServico.verificarUsuario(this.usuario)
       .subscribe(
-        data => {
+        data_json => {
           // execução com sucesso
-          var retornoUsuario: Usuario;
-          retornoUsuario = data;
-          sessionStorage.setItem("usuario-autenticado", "1");
-          sessionStorage.setItem("usuario-email", retornoUsuario.email);
+          this.usuarioServico.usuario = data_json;
+          //var retornoUsuario: Usuario;
+          //retornoUsuario = data;
+          //sessionStorage.setItem("usuario-autenticado", "1");
+          //sessionStorage.setItem("usuario-email", retornoUsuario.email);
 
           // redirecionar para home ou pagina acessada
           if (this.returnUrl == null) {

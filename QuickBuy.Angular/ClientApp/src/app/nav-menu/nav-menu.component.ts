@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioServico } from '../servicos/usuario/usuario.servico';
 
 @Component({
   selector: 'app-nav-menu',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class NavMenuComponent {
   isExpanded = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private usuarioServico: UsuarioServico) {
 
   }
 
@@ -23,15 +24,11 @@ export class NavMenuComponent {
 
   // Verificae se o usuario está autenticado
   public usuarioAutenticado(): boolean {
-    var autenticado = sessionStorage.getItem("usuario-autenticado");
-    if (autenticado == "1") {
-      return true;
-    }
-    return false;
+    return this.usuarioServico.usuarioAutenticado();
   }
 
   sair() {
-    sessionStorage.setItem("usuario-autenticado", "");
+    this.usuarioServico.limparSessao();
     this.router.navigate(['/']);
   }
 }

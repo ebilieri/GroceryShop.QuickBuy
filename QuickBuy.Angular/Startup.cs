@@ -40,6 +40,7 @@ namespace QuickBuy.Angular
 
             // Mapeamento Injeção de dependencia
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
 
             // Sweggar configuration
