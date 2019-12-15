@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   public usuario;
   public returnUrl: string;
   public mensagem: string;
+  public ativar_spinner: boolean;
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute, private usuarioServico: UsuarioServico) {
 
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
 
   // Efetuar login no sistema
   entrar(): void {
+    this.ativar_spinner = true;
     // chamar servico/api para validar usuario e senha
     this.usuarioServico.verificarUsuario(this.usuario)
       .subscribe(
@@ -54,6 +56,7 @@ export class LoginComponent implements OnInit {
           // erro-falha ao executar operação
           this.mensagem = erro.error;
           console.log(erro.error);
+          this.ativar_spinner = false;
         }
       );
   }
