@@ -38,11 +38,7 @@ export class LoginComponent implements OnInit {
         data_json => {
           // execução com sucesso
           this.usuarioServico.usuario = data_json;
-          //var retornoUsuario: Usuario;
-          //retornoUsuario = data;
-          //sessionStorage.setItem("usuario-autenticado", "1");
-          //sessionStorage.setItem("usuario-email", retornoUsuario.email);
-
+          
           // redirecionar para home ou pagina acessada
           if (this.returnUrl == null) {
             this.router.navigate(['/']);
@@ -50,7 +46,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate([this.returnUrl]);
           }
 
-          //console.log(data);
+          console.log(data_json);
         },
         erro => {
           // erro-falha ao executar operação
