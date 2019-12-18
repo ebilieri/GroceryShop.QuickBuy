@@ -20,15 +20,15 @@ export class ProdutoComponent implements OnInit {
   }
 
   public cadastrar() {
-    this.produtoServico.cadastrar(this.produto)
-      .subscribe(
-        data_json => {
-          console.log(data_json);
-        },
-        erro => {
-          console.log(erro.error);
-        }
-      );
+    //this.produtoServico.cadastrar(this.produto)
+    //  .subscribe(
+    //    data_json => {
+    //      console.log(data_json);
+    //    },
+    //    erro => {
+    //      console.log(erro.error);
+    //    }
+    //  );
   }
 
 }
