@@ -30,11 +30,18 @@ namespace QuickBuy.Angular.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post()
+        public ActionResult Post([FromBody] Usuario usuario)
         {
             try
             {
-                return Ok();
+                var usuarioCadastrado = _usuarioRepositorio.Obter(usuario.Email);
+                if (usuarioCadastrado == null)
+                {
+                    _usuarioRepositorio.Adicionar(usuario);
+                    return Ok(usuario);
+                }
+
+                return BadRequest("Usuário já cadastrado no sistema com esse Email");
             }
             catch (Exception ex)
             {

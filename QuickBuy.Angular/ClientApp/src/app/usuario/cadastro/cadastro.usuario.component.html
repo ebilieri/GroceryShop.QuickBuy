@@ -81,14 +81,21 @@
       </div>
     </div>
 
+    <!--botão salvar-->
     <button class="btn btn-lg btn-primary btn-block mb-2" type="submit" (click)="cadastrarUsuario()" [disabled]="ativar_spinner">
       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
       Salvar
     </button>
-    <div><a [routerLink]='["/entrar"]'>Voltar</a></div>
-    <!--Mensagem Validação-->
+    <div class="mb-2"><a [routerLink]='["/entrar"]'>Voltar</a></div>
+
+  <!--Mensagem Validação-->
     <div class="alert alert-danger" *ngIf="mensagem">
       {{mensagem}}
+    </div>
+
+  <!--Mensagem cadastrado com sucesso-->
+    <div class="alert alert-success" *ngIf="usuarioCadastrado">
+      Usuário cadasstrado com sucesso! <a class="alert-link" [routerLink]='["/entrar"]'>Clique aqui</a> para entrar com a sua conta no sistema.
     </div>
   </form>
   
