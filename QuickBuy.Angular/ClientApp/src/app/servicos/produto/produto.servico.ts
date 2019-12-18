@@ -10,7 +10,6 @@ import { Produto } from '../../modelo/produto';
 export class ProdutoServico implements OnInit {
 
   private baseURL: string;
-
   public produtos: Produto[];
 
   get headers(): HttpHeaders {
@@ -33,7 +32,7 @@ export class ProdutoServico implements OnInit {
 
   public salvar(produto: Produto): Observable<Produto> {
 
-    return this.http.put<Produto>(this.baseURL + 'api/produto/', JSON.stringify(produto), { headers: this.headers });
+    return this.http.put<Produto>(this.baseURL + 'api/produto', JSON.stringify(produto), { headers: this.headers });
   }
 
   public deletar(produtoId: number): Observable<Produto> {
@@ -49,5 +48,11 @@ export class ProdutoServico implements OnInit {
   public obterProduto(produtoId: number): Observable<Produto> {
 
     return this.http.get<Produto>(this.baseURL + 'api/produto/' + produtoId);
+  }
+
+  public enviarArquivo(arquivoSelecionado: File): Observable<string> {
+    const formData: FormData = new FormData();
+    formData.append('arquivoEnviado', arquivoSelecionado, arquivoSelecionado.name);
+    return this.http.post<string>(this.baseURL + 'api/produto/enviarArquivo', formData);
   }
 }

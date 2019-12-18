@@ -12,7 +12,7 @@ export class CadastroUsuarioComponent implements OnInit {
 
   public usuario: Usuario;
   public ativar_spinner: boolean;
-  public mensagem: string;
+  public mensagem: string[];
   public usuarioCadastrado: boolean;
 
   constructor(private usuarioServico: UsuarioServico) {
@@ -29,7 +29,7 @@ export class CadastroUsuarioComponent implements OnInit {
       .subscribe(
         data_json => {
           this.usuarioCadastrado = true;
-          this.mensagem = ""; // limpar mensagem
+          this.mensagem = null; // limpar mensagem
           this.ativar_spinner = false;
         },
         erro => {

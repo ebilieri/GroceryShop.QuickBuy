@@ -10,6 +10,9 @@ import { ProdutoServico } from '../servicos/produto/produto.servico';
 
 export class ProdutoComponent implements OnInit {
   public produto: Produto;
+  public arquivoSelecionado: File;
+  public ativar_spinner;
+  public  mensagem: string;
 
   constructor(private produtoServico: ProdutoServico) {
 
@@ -19,16 +22,50 @@ export class ProdutoComponent implements OnInit {
     this.produto = new Produto();
   }
 
+  // fazer upload imagem produto
+  public inputChange(files: FileList) {
+    this.arquivoSelecionado = files.item(0);
+    this.ativarSpinner();
+
+    // chamar serviço enviar arquivo
+    this.produtoServico.enviarArquivo(this.arquivoSelecionado)
+      .subscribe(
+        nomeArquivo => {
+          this.produto.nomeArquivo = nomeArquivo;
+          this.desativarSpinner();
+          //alert(this.produto.nomeArquivo);
+          console.log(nomeArquivo);
+        },
+        erro => {
+          this.desativarSpinner();
+          console.log(erro.error);
+        }
+      );
+  }
+
   public cadastrar() {
-    //this.produtoServico.cadastrar(this.produto)
-    //  .subscribe(
-    //    data_json => {
-    //      console.log(data_json);
-    //    },
-    //    erro => {
-    //      console.log(erro.error);
-    //    }
-    //  );
+    this.ativarSpinner();
+
+    this.produtoServico.cadastrar(this.produto)
+      .subscribe(
+        data_json => {
+          this.desativarSpinner();
+          console.log(data_json);
+        },
+        erro => {
+          this.desativarSpinner();
+          this.mensagem = erro.error;
+          console.log(erro.error);
+        }
+      );
+  }
+
+  public ativarSpinner() {
+    this.ativar_spinner = true;
+  }
+
+  public desativarSpinner() {
+    this.ativar_spinner = false;
   }
 
 }

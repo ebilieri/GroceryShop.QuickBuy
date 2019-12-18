@@ -38,7 +38,7 @@ namespace QuickBuy.Angular.Controllers
                 if (usuarioCadastrado == null)
                 {
                     _usuarioRepositorio.Adicionar(usuario);
-                    return Ok(usuario);
+                    return Created("api/usuario", usuario);
                 }
 
                 return BadRequest("Usuário já cadastrado no sistema com esse Email");

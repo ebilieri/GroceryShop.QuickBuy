@@ -6,16 +6,22 @@
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public decimal Preco { get; set; }
+        public string NomeArquivo { get; set; }
 
         public override void Validate()
         {
             LimparMensagemValidacao();
 
+            if (string.IsNullOrEmpty(Nome))
+                AdicionarMensagem("Nome é de preenchimento obrigatório");
+
+            if (string.IsNullOrEmpty(Descricao))
+                AdicionarMensagem("Descrição é de preenchimento obrigatório");
+
             if (Preco <= 0)
                 AdicionarMensagem("Informe um Preço valido para o Produto");
 
-            if (string.IsNullOrEmpty(Nome))
-                AdicionarMensagem("Nome é de preenchimento obrigatório");
+            
         }
     }
 }

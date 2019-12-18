@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
@@ -31,12 +32,14 @@ namespace QuickBuy.Angular
             // String de conexão com o Banco de dados (MySql)
             var connectionString = Configuration.GetConnectionString("QuickByConnection");
 
+            // Configurar context banco de dados
             services.AddDbContext<QuickBuyContexto>(option =>
                     option.UseLazyLoadingProxies()
                         .UseMySql(connectionString, m =>
                             m.MigrationsAssembly("QuickBuy.Repositorio")));
 
-
+            // Mapeamento Injeção de dependencia HttpContextAccessor
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // Mapeamento Injeção de dependencia
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();

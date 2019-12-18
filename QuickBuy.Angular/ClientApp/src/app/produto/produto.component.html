@@ -20,16 +20,16 @@
 
 <!--Descricao-->
 <label for="inputDescricao" class="sr-only">Descricao</label>
-<input type="text" id="inputDescricao" name="descricaoProduto"
-       placeholder="Descrição do produto"
-       class="form-control mb-2 col-md-6"
-       [ngClass]="{
+<textarea rows="3" id="inputDescricao" name="descricaoProduto"
+          placeholder="Descrição do produto"
+          class="form-control mb-2 col-md-6"
+          [ngClass]="{
             'is-invalid':descricao.invalid && (descricao.dirty || descricao.touched),
             'is-valid':descricao.valid && (descricao.dirty || descricao.touched)
            }"
-       [(ngModel)]="produto.descricao"
-       #descricao="ngModel"
-       required />
+          [(ngModel)]="produto.descricao"
+          #descricao="ngModel"
+          required></textarea>
 
 <div class="invalid-feedback mb-2" *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
   <div *ngIf="descricao.errors.required">
@@ -59,7 +59,7 @@
 <!--Imagem-->
 <div class="input-group mb-2">
   <div class="custom-file col-md-6">
-    <input type="file" class="custom-file-input" id="inputFile">
+    <input type="file" class="custom-file-input" id="inputFile" (change)="inputChange($event.target.files)">
     <label class="custom-file-label" for="inputFile">Selecione uma foto para o produto</label>
   </div>
 </div>
@@ -71,7 +71,9 @@
   Salvar
 </button>
 
-<div class="alert alert-danger" *ngIf="mensagem">
-  {{mensagem}}
+<div class="alert alert-danger col-md-6" *ngIf="mensagem">
+  <div *ngFor="let msg of mensagem">
+    {{ msg }}
+  </div>
 </div>
 

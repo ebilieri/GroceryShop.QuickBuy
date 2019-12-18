@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuickBuy.Repositorio.Contexto;
 
 namespace QuickBuy.Repositorio.Migrations
 {
     [DbContext(typeof(QuickBuyContexto))]
-    partial class QuickBuyContextoModelSnapshot : ModelSnapshot
+    [Migration("20191218191718_AlteracaoTamanhoColumnPrecoProduto")]
+    partial class AlteracaoTamanhoColumnPrecoProduto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,7 +89,7 @@ namespace QuickBuy.Repositorio.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<string>("NomeArquivo")
+                    b.Property<string>("NomeAquivo")
                         .HasMaxLength(2500);
 
                     b.Property<decimal>("Preco")
