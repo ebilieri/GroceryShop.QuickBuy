@@ -19,9 +19,7 @@
                 AdicionarMensagem("Descrição é de preenchimento obrigatório");
 
             if (Preco <= 0)
-                AdicionarMensagem("Informe um Preço valido para o Produto");
-
-            
+                AdicionarMensagem("Preço é de preenchimento obrigatório");          
         }
     }
 }

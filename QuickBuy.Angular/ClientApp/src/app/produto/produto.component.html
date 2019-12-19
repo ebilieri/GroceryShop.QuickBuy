@@ -72,7 +72,7 @@
 </button>
 
 <div class="alert alert-danger col-md-6" *ngIf="mensagem">
-  <div *ngFor="let msg of mensagem">
+  <div *ngFor="let msg of (mensagem ? mensagem : [])">
     {{ msg }}
   </div>
 </div>

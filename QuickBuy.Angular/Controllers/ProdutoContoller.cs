@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using QuickBuy.Dominio.Contratos;
 using QuickBuy.Dominio.Entidades;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -25,6 +26,16 @@ namespace QuickBuy.Angular.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
+        private List<string> ObterListaErros(Exception ex)
+        {
+            var erros = new List<string>();
+            erros.Add(ex.Message);
+            if (ex.InnerException != null)
+                erros.Add(ex.InnerException.Message);
+
+            return erros;
+        }
+
         [HttpGet]
         public IActionResult Get()
         {
@@ -34,7 +45,7 @@ namespace QuickBuy.Angular.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.ToString());
+                return BadRequest(ObterListaErros(ex));
             }
         }
 
@@ -55,7 +66,7 @@ namespace QuickBuy.Angular.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.ToString());
+                return BadRequest(ObterListaErros(ex));
             }
         }
 
@@ -81,7 +92,7 @@ namespace QuickBuy.Angular.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.ToString());
+                return BadRequest(ObterListaErros(ex));
             }
         }
     }
