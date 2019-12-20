@@ -30,7 +30,7 @@ namespace QuickBuy.Angular
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // String de conexão com o Banco de dados (MySql)
-            var connectionString = Configuration.GetConnectionString("QuickByConnection");
+            var connectionString = Configuration.GetConnectionString("QuickRemoteMysql");
 
             // Configurar context banco de dados
             services.AddDbContext<QuickBuyContexto>(option =>

@@ -79,7 +79,7 @@ namespace QuickBuy.Angular.Controllers
                 var nomeArquivo = formFile.FileName;
                 var extensao = nomeArquivo.Split(".").Last();
                 var arraryNomeArquivo = Path.GetFileNameWithoutExtension(nomeArquivo).Take(10).ToArray();
-                var novoNomeArquivo = new string(arraryNomeArquivo).Replace(" ", "_") + $"_{Guid.NewGuid()}.{ extensao}";
+                var novoNomeArquivo = new string(arraryNomeArquivo).Replace(" ", "_") + $"_{Guid.NewGuid()}.{extensao}";
                 var pastaArquivos = _hostingEnvironment.WebRootPath + "\\arquivos\\";
                 var nomeCompleto = pastaArquivos + novoNomeArquivo;
 

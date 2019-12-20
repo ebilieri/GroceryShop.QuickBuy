@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
+import { Produto } from '../../modelo/produto';
+import { ProdutoServico } from '../../servicos/produto/produto.servico';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pesquisa-produto',
@@ -8,8 +10,28 @@ import { from } from 'rxjs';
 })
 
 export class PesquisaProdutoComponent implements OnInit {
-    ngOnInit(): void {
-        throw new Error("Method not implemented.");
+
+  public produtos: Produto[];
+
+  ngOnInit(): void {
+
+  }
+
+  constructor(private produtoServico: ProdutoServico, private router: Router) {
+    this.carregarProdutos();
+  }
+
+
+  private carregarProdutos() {
+        this.produtoServico.obterTodosProdutos()
+            .subscribe(produtos_data => {
+                this.produtos = produtos_data;
+            }, erro => {
+                console.log(erro.error);
+            });
     }
 
+  public adicionarProduto() {
+    this.router.navigate(['/produto']);
+  }
 }

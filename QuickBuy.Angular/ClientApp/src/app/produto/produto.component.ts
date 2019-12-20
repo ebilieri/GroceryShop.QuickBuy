@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Produto } from '../modelo/produto';
 import { ProdutoServico } from '../servicos/produto/produto.servico';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-produto',
@@ -12,9 +13,9 @@ export class ProdutoComponent implements OnInit {
   public produto: Produto;
   public arquivoSelecionado: File;
   public ativar_spinner;
-  public  mensagem: string[];
+  public mensagem: string[];
 
-  constructor(private produtoServico: ProdutoServico) {
+  constructor(private produtoServico: ProdutoServico, private router: Router) {
 
   }
 
@@ -45,19 +46,19 @@ export class ProdutoComponent implements OnInit {
 
   public cadastrar() {
     this.ativarSpinner();
-
+    // chama serviço que cadastra produto
     this.produtoServico.cadastrar(this.produto)
       .subscribe(
         data_json => {
           this.desativarSpinner();
-          console.log(data_json);
+          console.log(data_json);          
+          this.router.navigate(['/pesquisar-produto']);          
         },
         erro => {
           this.desativarSpinner();
           this.mensagem = erro.error;
           console.log(erro.error);
-        }
-      );
+        });
   }
 
   public ativarSpinner() {
