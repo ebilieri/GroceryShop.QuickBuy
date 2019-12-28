@@ -49,6 +49,26 @@ namespace QuickBuy.Angular.Controllers
             }
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var produto = _produtoRepositorio.ObterPorId(id);
+                if (produto == null)
+                {
+                    return NotFound();
+                }
+
+                _produtoRepositorio.Remover(produto);
+                // retornar lista atualizada
+                return Ok(_produtoRepositorio.ObterTodos());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ObterListaErros(ex));
+            }
+        }
 
         [HttpPost]
         public IActionResult Post([FromBody] Produto produto)

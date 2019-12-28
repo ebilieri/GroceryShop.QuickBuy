@@ -33,7 +33,7 @@
         <img *ngIf="!p.nomeArquivo" src="/assets/no-image.png" title="{{p.nome}}" class="img-thumbnail">
       </td>
       <td style="width:5%"><button class="btn btn-success btn-sm">Editar</button></td>
-      <td style="width:5%"><button class="btn btn-danger btn-sm" (click)="deletarProduto()">Excluir</button></td>
+      <td style="width:5%"><button class="btn btn-danger btn-sm" (click)="deletarProduto(p)">Excluir</button></td>
     </tr>
   </tbody>
 </table>
