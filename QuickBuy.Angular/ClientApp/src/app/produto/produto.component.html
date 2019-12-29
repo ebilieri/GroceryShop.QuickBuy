@@ -64,12 +64,15 @@
   </div>
 </div>
 
-<button class="btn btn-lg btn-primary btn-block mb-2 col-md-6"
-        type="submit" (click)="cadastrar()" [disabled]="ativar_spinner">
-  <span class="spinner-border spinner-border-sm"
-        role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
-  Salvar
-</button>
+<div class="form-inline">
+  <button class="btn btn-primary"
+          type="submit" (click)="cadastrar()" [disabled]="ativar_spinner">
+    <span class="spinner-border spinner-border-sm"
+          role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+    Salvar
+  </button>
+  <button class="btn btn-danger ml-3" [routerLink]="['/pesquisar-produto']">Cancelar</button>
+</div>
 
 <div class="alert alert-danger col-md-6" *ngIf="mensagem">
   <div *ngFor="let msg of (mensagem ? mensagem : [])">

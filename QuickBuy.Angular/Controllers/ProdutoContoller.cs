@@ -81,8 +81,16 @@ namespace QuickBuy.Angular.Controllers
                     return BadRequest(produto.ObterMensageValidacao());
                 }
 
-                _produtoRepositorio.Adicionar(produto);
-                return Created("api/produto", produto);
+                if (produto.Id > 0)
+                {
+                    _produtoRepositorio.Atualizar(produto);
+                    return Ok(produto);
+                }
+                else
+                {
+                    _produtoRepositorio.Adicionar(produto);
+                    return Created("api/produto", produto);
+                }
             }
             catch (Exception ex)
             {

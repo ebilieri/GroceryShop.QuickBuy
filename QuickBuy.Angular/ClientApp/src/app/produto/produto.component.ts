@@ -20,7 +20,13 @@ export class ProdutoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.produto = new Produto();
+    var produtoSessao = sessionStorage.getItem('produtoSessao');
+    
+    if (produtoSessao) {
+      this.produto = JSON.parse(produtoSessao);
+    } else {
+      this.produto = new Produto();
+    }
   }
 
   // fazer upload imagem produto
@@ -51,8 +57,9 @@ export class ProdutoComponent implements OnInit {
       .subscribe(
         data_json => {
           this.desativarSpinner();
-          console.log(data_json);          
-          this.router.navigate(['/pesquisar-produto']);          
+          console.log(data_json);
+          sessionStorage.setItem('produtoSessao', '');
+          this.router.navigate(['/pesquisar-produto']);
         },
         erro => {
           this.desativarSpinner();

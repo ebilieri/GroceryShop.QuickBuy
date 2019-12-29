@@ -14,7 +14,7 @@ export class PesquisaProdutoComponent implements OnInit {
   public produtos: Produto[];
 
   ngOnInit(): void {
-
+    sessionStorage.setItem('produtoSessao', '');
   }
 
   constructor(private produtoServico: ProdutoServico, private router: Router) {
@@ -38,7 +38,6 @@ export class PesquisaProdutoComponent implements OnInit {
   public deletarProduto(produto: Produto) {
     var retorno = confirm("Deseja realmente excluir o produto selecionado?");
     if (retorno == true) {
-      //alert(produto.id);
       this.produtoServico.deletar(produto.id).subscribe(
         dataResult => {
           this.produtos = dataResult;
@@ -47,5 +46,10 @@ export class PesquisaProdutoComponent implements OnInit {
           console.log(erro.error);
         });
     }
+  }
+
+  public editarProduto(produto: Produto) {
+    sessionStorage.setItem('produtoSessao', JSON.stringify(produto));
+    this.router.navigate(['/produto']);
   }
 }

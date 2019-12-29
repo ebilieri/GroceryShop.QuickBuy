@@ -1,4 +1,4 @@
-<h1 class="h3 mb-3 font-weight-normal titulo">Pesquisa de Produtos 22</h1>
+<h1 class="h3 mb-3 font-weight-normal titulo">Pesquisa de Produtos</h1>
 <button class="btn btn-primary mb-2" (click)="adicionarProduto()">Adicionar Produto</button>
 
 <div class="d-flex align-items-center mb-2" *ngIf="!produtos">
@@ -32,8 +32,8 @@
              title="{{p.nome}}" class="img-thumbnail">
         <img *ngIf="!p.nomeArquivo" src="/assets/no-image.png" title="{{p.nome}}" class="img-thumbnail">
       </td>
-      <td style="width:5%"><button class="btn btn-success btn-sm">Editar</button></td>
-      <td style="width:5%"><button class="btn btn-danger btn-sm" (click)="deletarProduto(p)">Excluir</button></td>
+      <td><button class="btn btn-success btn-sm" (click)="editarProduto(p)">Editar</button></td>
+      <td><button class="btn btn-danger btn-sm" (click)="deletarProduto(p)">Excluir</button></td>
     </tr>
   </tbody>
 </table>
