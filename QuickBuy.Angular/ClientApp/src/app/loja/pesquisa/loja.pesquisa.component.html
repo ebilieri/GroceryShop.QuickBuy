@@ -1,20 +1,30 @@
-Html da loja de pesquisa de produtos
-<div class="album py-2 bg-light">
-  <div class="container">
+<div class="d-flex align-items-center mb-2" *ngIf="!produtos">
+  Carregando produtos...
+  <div class="spinner-grow text-secondary" role="status">
+    <span class="sr-only">Carregando produtos...</span>
+  </div>
+  <div class="spinner-grow text-secondary" role="status">
+    <span class="sr-only">Carregando produtos...</span>
+  </div>
+</div>
 
+<div class="album py-0 bg-light" *ngIf="produtos?.length>0">
+  <div class="container">
     <div class="row">
 
-      <div class="col-md-4" *ngFor="let p of produtos">
+      <div class="col-md-4 px-1" *ngFor="let p of produtos">
 
         <div class="card mb-4 shadow-sm">
-          <img *ngIf="p.nomeArquivo" src="../../../../../arquivos/{{p.nomeArquivo}}"
-               title="{{p.nome}}" class="img-thumbnail">
-          <img *ngIf="!p.nomeArquivo" src="/assets/no-image.png" title="{{p.nome}}" class="img-thumbnail">
+          <div>
+            <img *ngIf="p.nomeArquivo" src="../../../../../arquivos/{{p.nomeArquivo}}"
+                 title="{{p.nome}}" class="card-top" style="height:200px;">
+            <img *ngIf="!p.nomeArquivo" src="/assets/no-image.png" title="{{p.nome}}" class="card-top" style="height:200px;">
+          </div>
 
           <div class="card-body">
-            <h6 class="card-text">{{p.nome}}</h6>
-            <div class="card-text">{{p.descricao}}</div>
-            <h5 class="card-text">{{p.preco}}</h5>            
+            <h6 class="card-text">{{p.nome | truncate: 35}}</h6>
+            <div class="card-text mb-4">{{p.descricao | truncate: 100}}</div>
+            <h5 class="card-text">{{p.preco}}</h5>
           </div>
         </div>
       </div>
