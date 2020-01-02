@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-md-6">
       <img *ngIf="produto.nomeArquivo" src="../../../../../arquivos/{{produto.nomeArquivo}}"
-           title="{{produto.nome}}" style="height:400px;">
-      <img *ngIf="!produto.nomeArquivo" src="/assets/no-image.png" title="{{produto.nome}}" style="height:400px;">
+           title="{{produto.nome}}" class="img-fluid">
+      <img *ngIf="!produto.nomeArquivo" src="/assets/no-image.png" title="{{produto.nome}}" class="img-fluid">
     </div>
     <div class="col-md-6">
       <div class="row mb-4"> <h5> {{produto.nome}}</h5></div>

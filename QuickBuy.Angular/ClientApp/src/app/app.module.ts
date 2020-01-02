@@ -55,10 +55,12 @@ import { LojaProdutoComponent } from './loja/produto/loja.produto.component';
       { path: 'pesquisar-produto', component: PesquisaProdutoComponent },
       { path: 'entrar', component: LoginComponent },
       { path: 'novo-usuario', component: CadastroUsuarioComponent },
-      { path: 'loja-produto', component: LojaProdutoComponent}
+      { path: 'loja-produto', component: LojaProdutoComponent }
     ])
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt' }, UsuarioServico, ProdutoServico], // Configurar os serviços
+  providers: [{ provide: LOCALE_ID, useValue: 'pt' },
+    UsuarioServico,
+    ProdutoServico], // Configurar os serviços
   bootstrap: [AppComponent]
 })
 export class AppModule { }

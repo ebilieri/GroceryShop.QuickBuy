@@ -18,8 +18,9 @@
           <div class="card mb-4 shadow-sm">
             <div>
               <img *ngIf="p.nomeArquivo" src="../../../../../arquivos/{{p.nomeArquivo}}"
-                   title="{{p.nome}}" class="card-top" style="height:200px;">
-              <img *ngIf="!p.nomeArquivo" src="/assets/no-image.png" title="{{p.nome}}" class="card-top" style="height:200px;">
+                   title="{{p.nome}}" class="card-top" style="max-height:170px;">
+              <img *ngIf="!p.nomeArquivo" src="/assets/no-image.png" title="{{p.nome}}"
+                   class="card-top" style="max-height:170px;">
             </div>
 
             <div class="card-body">
