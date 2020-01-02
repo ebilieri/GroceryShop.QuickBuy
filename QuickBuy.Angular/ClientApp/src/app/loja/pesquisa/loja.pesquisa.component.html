@@ -14,19 +14,21 @@
 
       <div class="col-md-4 px-1" *ngFor="let p of produtos">
 
-        <div class="card mb-4 shadow-sm">
-          <div>
-            <img *ngIf="p.nomeArquivo" src="../../../../../arquivos/{{p.nomeArquivo}}"
-                 title="{{p.nome}}" class="card-top" style="height:200px;">
-            <img *ngIf="!p.nomeArquivo" src="/assets/no-image.png" title="{{p.nome}}" class="card-top" style="height:200px;">
-          </div>
+        <a (click)="abrirProduto(p)" style="cursor:pointer">
+          <div class="card mb-4 shadow-sm">
+            <div>
+              <img *ngIf="p.nomeArquivo" src="../../../../../arquivos/{{p.nomeArquivo}}"
+                   title="{{p.nome}}" class="card-top" style="height:200px;">
+              <img *ngIf="!p.nomeArquivo" src="/assets/no-image.png" title="{{p.nome}}" class="card-top" style="height:200px;">
+            </div>
 
-          <div class="card-body">
-            <h6 class="card-text">{{p.nome | truncate: 35}}</h6>
-            <div class="card-text mb-4">{{p.descricao | truncate: 100}}</div>
-            <h5 class="card-text">{{p.preco}}</h5>
+            <div class="card-body">
+              <h6 class="card-text">{{p.nome | truncate: 35}}</h6>
+              <div class="card-text mb-4">{{p.descricao | truncate: 100}}</div>
+              <h5 class="card-text">{{p.preco  | currency:'BRL':'symbol':'0.2-2':'pt'}}</h5>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
 
     </div>

@@ -1,10 +1,18 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <img *ngIf="produto.nomeArquivo" src="../../../../../arquivos/{{produto.nomeArquivo}}"
+           title="{{produto.nome}}" style="height:400px;">
+      <img *ngIf="!produto.nomeArquivo" src="/assets/no-image.png" title="{{produto.nome}}" style="height:400px;">
+    </div>
+    <div class="col-md-6">
+      <div class="row mb-4"> <h5> {{produto.nome}}</h5></div>
+      <div class="row mb-4"> {{produto.descricao}}</div>
+      <div class="row mb-4"> <h5> {{produto.preco | currency:'BRL':'symbol':'0.2-2':'pt'}}</h5></div>
+      <div class="row mb-4">
+        <button class="btn btn-success btn-lg">Comprar</button>
+      </div>
+    </div>
+  </div>
 
-</body>
-</html>
+</div>

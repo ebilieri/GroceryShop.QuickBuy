@@ -26,7 +26,7 @@
     <tr *ngFor="let p of produtos">
       <td style="width:25%">{{p.nome}}</td>
       <td style="width:40%">{{p.descricao}}</td>
-      <td style="width:10%">{{p.preco}}</td>
+      <td style="width:10%">{{p.preco | currency:'BRL':'symbol':'0.2-2':'pt'}}</td>
       <td>
         <img *ngIf="p.nomeArquivo" src="../../../../../arquivos/{{p.nomeArquivo}}"
              title="{{p.nome}}" class="img-thumbnail">

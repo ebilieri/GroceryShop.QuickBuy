@@ -1,9 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { TruncateModule } from 'ng2-truncate';
+
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+registerLocaleData(localePt, 'pt');
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -19,6 +23,7 @@ import { CadastroUsuarioComponent } from './usuario/cadastro/cadastro.usuario.co
 import { ProdutoServico } from './servicos/produto/produto.servico';
 import { PesquisaProdutoComponent } from './produto/pesquisa/pesquisa.produto.component';
 import { LojaPesquisaComponent } from './loja/pesquisa/loja.pesquisa.component';
+import { LojaProdutoComponent } from './loja/produto/loja.produto.component';
 
 
 @NgModule({
@@ -33,7 +38,8 @@ import { LojaPesquisaComponent } from './loja/pesquisa/loja.pesquisa.component';
     LoginComponent,
     CadastroUsuarioComponent,
     PesquisaProdutoComponent,
-    LojaPesquisaComponent
+    LojaPesquisaComponent,
+    LojaProdutoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -48,10 +54,11 @@ import { LojaPesquisaComponent } from './loja/pesquisa/loja.pesquisa.component';
       { path: 'produto', component: ProdutoComponent },
       { path: 'pesquisar-produto', component: PesquisaProdutoComponent },
       { path: 'entrar', component: LoginComponent },
-      { path: 'novo-usuario', component: CadastroUsuarioComponent }
+      { path: 'novo-usuario', component: CadastroUsuarioComponent },
+      { path: 'loja-produto', component: LojaProdutoComponent}
     ])
   ],
-  providers: [UsuarioServico, ProdutoServico], // Configurar os serviços
+  providers: [{ provide: LOCALE_ID, useValue: 'pt' }, UsuarioServico, ProdutoServico], // Configurar os serviços
   bootstrap: [AppComponent]
 })
 export class AppModule { }
