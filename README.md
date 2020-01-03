@@ -1,4 +1,4 @@
-# Angular.QuickBuy
+# GroceryShop.QuickBuy
 Repositório que armazena os arquivos do aplicativo criado no curso ASP NET Core com Angular: Desenvolvimento Web Fullstack
 https://www.udemy.com/desenvolvimento-aspnet-core-angular
 
