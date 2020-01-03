@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Produto } from '../../modelo/produto';
 import { ProdutoServico } from '../../servicos/produto/produto.servico';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-loja',
@@ -16,7 +17,8 @@ export class LojaPesquisaComponent implements OnInit {
 
   }
 
-  constructor(private produtoServico: ProdutoServico, private router: Router) {
+  constructor(private produtoServico: ProdutoServico, private router: Router, private toast: ToastrService) {
+    // carregar produtos ao iniciar
     this.carregarProdutos();
   }
 
@@ -25,8 +27,10 @@ export class LojaPesquisaComponent implements OnInit {
       .subscribe(dataResult => {
         this.produtos = dataResult;
       }, erro => {
-        console.log(erro.error);
+          console.log(erro.error);
+          this.toast.error(erro.error, "Erro!");
       });
+    
   }
 
   public abrirProduto(produto: Produto) {

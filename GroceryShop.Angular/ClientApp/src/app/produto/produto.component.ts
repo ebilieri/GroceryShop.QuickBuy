@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Produto } from '../modelo/produto';
 import { ProdutoServico } from '../servicos/produto/produto.servico';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-produto',
@@ -15,7 +16,7 @@ export class ProdutoComponent implements OnInit {
   public ativar_spinner;
   public mensagem: string[];
 
-  constructor(private produtoServico: ProdutoServico, private router: Router) {
+  constructor(private produtoServico: ProdutoServico, private router: Router, private toast: ToastrService) {
 
   }
 
@@ -60,6 +61,7 @@ export class ProdutoComponent implements OnInit {
           console.log(data_json);
           sessionStorage.setItem('produtoSessao', '');
           this.router.navigate(['/pesquisar-produto']);
+          this.toast.success("Produto salvo com sucesso", "Sucesso!");
         },
         erro => {
           this.desativarSpinner();

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Produto } from '../../modelo/produto';
 import { ProdutoServico } from '../../servicos/produto/produto.servico';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'pesquisa-produto',
@@ -17,7 +18,8 @@ export class PesquisaProdutoComponent implements OnInit {
     sessionStorage.setItem('produtoSessao', '');
   }
 
-  constructor(private produtoServico: ProdutoServico, private router: Router) {
+  constructor(private produtoServico: ProdutoServico, private router: Router, private toast: ToastrService) {
+    // carregar produtos ao iniciar
     this.carregarProdutos();
   }
 
@@ -27,7 +29,8 @@ export class PesquisaProdutoComponent implements OnInit {
       .subscribe(produtos_data => {
         this.produtos = produtos_data;
       }, erro => {
-        console.log(erro.error);
+          console.log(erro.error);
+          this.toast.error(erro.error, "Erro!");
       });
   }
 
@@ -41,9 +44,11 @@ export class PesquisaProdutoComponent implements OnInit {
       this.produtoServico.deletar(produto.id).subscribe(
         dataResult => {
           this.produtos = dataResult;
+          this.toast.success("Produto removido com sucesso", "Sucesso!");
         },
         erro => {
           console.log(erro.error);
+          this.toast.error(erro.error, "Erro!");
         });
     }
   }
