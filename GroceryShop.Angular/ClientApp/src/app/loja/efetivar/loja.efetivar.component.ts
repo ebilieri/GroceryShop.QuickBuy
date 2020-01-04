@@ -12,9 +12,13 @@ export class LojaEfetivarComponent implements OnInit {
   public carrinhoCompras: LojaCarrinhoCompras;
   public produtos: Produto[];
 
-    ngOnInit(): void {
-      this.carrinhoCompras = new LojaCarrinhoCompras();
-      this.produtos = this.carrinhoCompras.obterProdutos();
-    }
+  ngOnInit(): void {
+    this.carrinhoCompras = new LojaCarrinhoCompras();
+    this.produtos = this.carrinhoCompras.obterProdutos();
+  }
+
+  public atualizarPreco(produto: Produto, quantidade: number) {
+
+  }
 
 }

@@ -8,9 +8,9 @@
     <div class="col-md-6">
       <div class="row mb-4"> <h5> {{produto.nome}}</h5></div>
       <div class="row mb-4"> {{produto.descricao}}</div>
-      <div class="row mb-4"> <h5> {{produto.preco | currency:'BRL':'symbol':'0.2-2':'pt'}}</h5></div>
+      <div class="row mb-4"> <h5 class="text-danger"> {{produto.preco | currency:'BRL':'symbol':'0.2-2':'pt'}}</h5></div>
       <div class="row mb-4">
-        <button class="btn btn-success btn-lg" (click)="comprar()">Comprar</button>
+        <button class="btn btn-warning btn-sm" (click)="comprar()">Adicionar ao carrinho</button>
       </div>
     </div>
   </div>
