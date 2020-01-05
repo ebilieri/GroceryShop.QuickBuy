@@ -60,9 +60,8 @@ import { LojaEfetivarComponent } from './loja/efetivar/loja.efetivar.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      //{ path: 'produto', component: ProdutoComponent, canActivate: [GuardaRotas] }, // mapeamento das rotas
-      { path: 'produto', component: ProdutoComponent },
-      { path: 'pesquisar-produto', component: PesquisaProdutoComponent },
+      { path: 'produto', component: ProdutoComponent, canActivate: [GuardaRotas] }, // mapeamento das rotas
+      { path: 'pesquisar-produto', component: PesquisaProdutoComponent, canActivate: [GuardaRotas] },
       { path: 'entrar', component: LoginComponent },
       { path: 'novo-usuario', component: CadastroUsuarioComponent },
       { path: 'loja-produto', component: LojaProdutoComponent },

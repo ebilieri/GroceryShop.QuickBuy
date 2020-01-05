@@ -58,7 +58,7 @@ namespace GroceryShop.Angular.Controllers
                 var usuarioRetorno = _usuarioRepositorio.Obter(usuario.Email, usuario.Senha);
 
                 if (usuarioRetorno != null)
-                    return Ok(usuario);
+                    return Ok(usuarioRetorno);
 
                 return BadRequest("Usuário ou senha inválido");
             }

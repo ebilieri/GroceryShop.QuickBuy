@@ -1,6 +1,7 @@
 import { Produto } from "../../modelo/produto";
 
 export class LojaCarrinhoCompras {
+    
   public produtos: Produto[] = [];
 
   public adicionar(produto: Produto) {
@@ -8,11 +9,11 @@ export class LojaCarrinhoCompras {
 
     if (!produtosLocalStorage) {
       // se não existir nada dentro do localStorage
-      this.produtos.push(produto);     
+      this.produtos.push(produto);
     } else {
       // se ja existir pelo menos um item armazenado na sessao(produtosLocalStorage)
       this.produtos = JSON.parse(produtosLocalStorage);
-      this.produtos.push(produto);      
+      this.produtos.push(produto);
     }
 
     localStorage.setItem("produtosLocalStorage", JSON.stringify(this.produtos));
@@ -26,6 +27,19 @@ export class LojaCarrinhoCompras {
   }
 
   public removerProduto(produto: Produto) {
+    var produtosLocalStorage = localStorage.getItem("produtosLocalStorage");
 
+    if (produtosLocalStorage) {
+      // recuperar os dodos do local storage
+      this.produtos = JSON.parse(produtosLocalStorage);
+      //retornar todos os produtos diferentes do atual
+      this.produtos = this.produtos.filter(p => p.id != produto.id);
+      // atualizar local storage
+      localStorage.setItem("produtosLocalStorage", JSON.stringify(this.produtos));
+    }
+  }
+
+  public atualizar(produtos: Produto[]) {
+    localStorage.setItem("produtosLocalStorage", JSON.stringify(produtos));
   }
 }

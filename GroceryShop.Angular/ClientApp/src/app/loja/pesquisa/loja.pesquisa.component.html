@@ -12,11 +12,11 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-md-4 px-1" *ngFor="let p of produtos">
+      <div class="col-md-3 px-1" *ngFor="let p of produtos">
 
         <a (click)="abrirProduto(p)" style="cursor:pointer">
-          <div class="card mb-4 shadow-sm">
-            <div>
+          <div class="card mb-3 shadow-sm">
+            <div class="text-center">
               <img *ngIf="p.nomeArquivo" src="../../../../../arquivos/{{p.nomeArquivo}}"
                    title="{{p.nome}}" class="card-top" style="max-height:170px;">
               <img *ngIf="!p.nomeArquivo" src="/assets/no-image.png" title="{{p.nome}}"
@@ -24,9 +24,8 @@
             </div>
 
             <div class="card-body">
-              <h6 class="card-text">{{p.nome | truncate: 35}}</h6>
-              <div class="card-text mb-4">{{p.descricao | truncate: 100}}</div>
-              <h5 class="card-text">{{p.preco  | currency:'BRL':'symbol':'0.2-2':'pt'}}</h5>
+              <div class="card-text mb-3 text-secondary">{{p.descricao | truncate: 95}}</div>
+              <h5 class="card-text">{{p.preco | currency:'BRL':'symbol':'0.2-2':'pt'}}</h5>
             </div>
           </div>
         </a>

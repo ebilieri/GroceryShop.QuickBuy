@@ -9,6 +9,7 @@ namespace GroceryShop.Dominio.Entidades
         public string Senha { get; set; }
         public string Nome { get; set; }
         public string SobreNome { get; set; }
+        public bool EhAdministrador { get; set; }
 
         /// <summary>
         /// Usuario pode ter um ou mais pedidos
