@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LojaCarrinhoCompras } from '../carrinho-compras/loja.carrinho.compras';
 import { Produto } from '../../modelo/produto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'loja-efetivar',
@@ -19,6 +20,11 @@ export class LojaEfetivarComponent implements OnInit {
     this.atualizarTotal();
   }
 
+
+  constructor(private router: Router) {
+
+  }
+
   public atualizarPreco(produto: Produto, quantidade: number) {
     if (!produto.precoOriginal)
       produto.precoOriginal = produto.preco;
@@ -27,7 +33,7 @@ export class LojaEfetivarComponent implements OnInit {
       quantidade = 1
       produto.quantidade = quantidade;
     }
-    
+
     produto.preco = produto.precoOriginal * quantidade;
     this.carrinhoCompras.atualizar(this.produtos);
 
@@ -43,6 +49,12 @@ export class LojaEfetivarComponent implements OnInit {
 
   public atualizarTotal() {
     this.total = this.produtos.reduce((acc, produto) => acc + produto.preco, 0);
+    if (!this.carrinhoCompras.temItensCarrinhoCompras())
+      this.router.navigate(['/']);
+  }
+
+  public efetivarCompra() {
+
   }
 
 }

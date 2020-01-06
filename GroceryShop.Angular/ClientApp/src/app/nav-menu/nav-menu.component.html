@@ -27,9 +27,11 @@
               <li class="dropdown-item" role="menu" [routerLink]='[""]' (click)="sair()">Sair</li>
             </ul>
           </li>
-          <!--<li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="usuarioAutenticado()">
-            <a class="nav-item nav-link text-dark" [routerLink]='[""]' (click)="sair()">Sair</a>
-          </li>-->
+          <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="temItensCarrinhoCompras()">
+            <a class="nav-item nav-link text-dark" [routerLink]='["/loja-efetivar-compra"]'>
+              <img src="/assets/carrinho-compras.jpg" style="width:40px;" />
+            </a>
+          </li>
         </ul>
       </div>
     </div>
