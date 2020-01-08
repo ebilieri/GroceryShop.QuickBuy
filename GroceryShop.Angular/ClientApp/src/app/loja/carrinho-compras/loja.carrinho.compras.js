@@ -41,6 +41,9 @@ var LojaCarrinhoCompras = /** @class */ (function () {
         var itens = this.obterProdutos();
         return (itens.length > 0);
     };
+    LojaCarrinhoCompras.prototype.limparCarrinhoComprar = function () {
+        localStorage.setItem("produtosLocalStorage", "");
+    };
     return LojaCarrinhoCompras;
 }());
 exports.LojaCarrinhoCompras = LojaCarrinhoCompras;

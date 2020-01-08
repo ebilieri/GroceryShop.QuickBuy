@@ -28,6 +28,7 @@ import { LojaPesquisaComponent } from './loja/pesquisa/loja.pesquisa.component';
 import { LojaProdutoComponent } from './loja/produto/loja.produto.component';
 import { LojaEfetivarComponent } from './loja/efetivar/loja.efetivar.component';
 import { PedidoServico } from './servicos/pedido/pedido.servico';
+import { LojaCompraFinalizadaComponent } from './loja/efetivar/loja.compra.finalizada.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { PedidoServico } from './servicos/pedido/pedido.servico';
     PesquisaProdutoComponent,
     LojaPesquisaComponent,
     LojaProdutoComponent,
-    LojaEfetivarComponent
+    LojaEfetivarComponent,
+    LojaCompraFinalizadaComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -66,7 +68,8 @@ import { PedidoServico } from './servicos/pedido/pedido.servico';
       { path: 'entrar', component: LoginComponent },
       { path: 'novo-usuario', component: CadastroUsuarioComponent },
       { path: 'loja-produto', component: LojaProdutoComponent },
-      { path: 'loja-efetivar-compra', component: LojaEfetivarComponent, canActivate: [GuardaRotas] }
+      { path: 'loja-efetivar-compra', component: LojaEfetivarComponent, canActivate: [GuardaRotas] },
+      { path: 'compra-finalizada-sucesso', component: LojaCompraFinalizadaComponent }
     ])
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt' },

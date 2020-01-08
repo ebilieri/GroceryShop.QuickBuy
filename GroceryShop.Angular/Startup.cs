@@ -27,7 +27,10 @@ namespace GroceryShop.Angular
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                // tratamento json loopping format
+                .AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             // String de conexão com o Banco de dados (MySql)
             //var connectionString = Configuration.GetConnectionString("QuickByConnection");
@@ -45,6 +48,7 @@ namespace GroceryShop.Angular
             // Mapeamento Injeção de dependencia
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+            services.AddScoped<IPedidoRepositorio, PedidoRepositorio>();
 
 
             // Sweggar configuration

@@ -1,6 +1,7 @@
 import { Produto } from "../../modelo/produto";
 
 export class LojaCarrinhoCompras {
+    
 
   public produtos: Produto[] = [];
 
@@ -12,6 +13,9 @@ export class LojaCarrinhoCompras {
       this.produtos.push(produto);
     } else {
       // se ja existir pelo menos um item armazenado na sessao(produtosLocalStorage)
+
+
+
       this.produtos = JSON.parse(produtosLocalStorage);
       this.produtos.push(produto);
     }
@@ -48,5 +52,9 @@ export class LojaCarrinhoCompras {
   public temItensCarrinhoCompras(): boolean {
     var itens = this.obterProdutos();
     return (itens.length > 0);
+  }
+
+ public limparCarrinhoComprar() {
+   localStorage.setItem("produtosLocalStorage", "");
   }
 }
