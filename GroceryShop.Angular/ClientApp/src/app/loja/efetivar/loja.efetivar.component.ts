@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { LojaCarrinhoCompras } from '../carrinho-compras/loja.carrinho.compras';
 import { Produto } from '../../modelo/produto';
 import { Router } from '@angular/router';
+import { Pedido } from '../../modelo/pedido';
+import { UsuarioServico } from '../../servicos/usuario/usuario.servico';
+import { ItemPedido } from '../../modelo/itemPedido';
+import { PedidoServico } from '../../servicos/pedido/pedido.servico';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'loja-efetivar',
@@ -21,7 +26,8 @@ export class LojaEfetivarComponent implements OnInit {
   }
 
 
-  constructor(private router: Router) {
+  constructor(private usuarioServico: UsuarioServico, private pedidoServico: PedidoServico,
+    private router: Router, private toast: ToastrService) {
 
   }
 
@@ -54,7 +60,51 @@ export class LojaEfetivarComponent implements OnInit {
   }
 
   public efetivarCompra() {
+    this.pedidoServico.efetivarCompra(this.criarPedido())
+      .subscribe(
+        pedidoId => {
 
+        },
+        erro => {
+          console.log(erro.error);
+          this.toast.error(erro.error, "Erro!");
+        }
+      );
+  }
+
+  public criarPedido(): Pedido {
+    let pedido = new Pedido();
+    // Usuario
+    pedido.usuarioId = this.usuarioServico.usuario.id;
+
+    // Endereço
+    pedido.cep = "12345-789";
+    pedido.cidade = "São Paulo";
+    pedido.estado = "SP";
+    pedido.enderecoCompleto = "Rua Central";
+    pedido.numeroEndereco = "112";
+    pedido.dataPedido = new Date();
+    pedido.dataPrevisaoEntrega = new Date();
+
+    // forma de pagamento
+    pedido.formaPagamentoId = 2;
+
+    this.produtos = this.carrinhoCompras.obterProdutos();
+
+    for (let produto of this.produtos) {
+      let itemPedido = new ItemPedido();
+
+      itemPedido.produtoId = produto.id;
+      
+      if (!produto.quantidade)
+        produto.quantidade = 1;
+      itemPedido.quantidade = produto.quantidade;
+
+      // adicionar itens pedido
+      pedido.itensPedido.push(itemPedido);
+    }
+
+    return pedido;
   }
 
 }

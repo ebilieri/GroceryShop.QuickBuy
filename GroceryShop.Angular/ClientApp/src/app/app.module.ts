@@ -27,6 +27,7 @@ import { PesquisaProdutoComponent } from './produto/pesquisa/pesquisa.produto.co
 import { LojaPesquisaComponent } from './loja/pesquisa/loja.pesquisa.component';
 import { LojaProdutoComponent } from './loja/produto/loja.produto.component';
 import { LojaEfetivarComponent } from './loja/efetivar/loja.efetivar.component';
+import { PedidoServico } from './servicos/pedido/pedido.servico';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { LojaEfetivarComponent } from './loja/efetivar/loja.efetivar.component';
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt' },
     UsuarioServico,
-    ProdutoServico], // Configurar os serviços
+    ProdutoServico,
+    PedidoServico], // Configurar os serviços
   bootstrap: [AppComponent]
 })
 export class AppModule { }
