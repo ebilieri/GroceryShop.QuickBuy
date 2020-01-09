@@ -11,8 +11,11 @@ var LojaCarrinhoCompras = /** @class */ (function () {
             this.produtos.push(produto);
         }
         else {
-            // se ja existir pelo menos um item armazenado na sessao(produtosLocalStorage)
+            // se ja existir pelo menos um item armazenado na sessao(produtosLocalStorage)      
             this.produtos = JSON.parse(produtosLocalStorage);
+            //retornar todos os produtos diferentes do atual
+            //var exist = this.produtos.filter(p=> p.id == produto.id);
+            //alert(exist);
             this.produtos.push(produto);
         }
         localStorage.setItem("produtosLocalStorage", JSON.stringify(this.produtos));
