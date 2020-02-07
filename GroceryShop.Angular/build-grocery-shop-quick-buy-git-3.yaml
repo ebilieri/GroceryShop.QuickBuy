@@ -1,0 +1,87 @@
+﻿kind: Build
+apiVersion: build.openshift.io/v1
+metadata:
+  annotations:
+    openshift.io/build-config.name: grocery-shop-quick-buy-git
+    openshift.io/build.number: '3'
+    openshift.io/build.pod-name: grocery-shop-quick-buy-git-3-build
+  selfLink: >-
+    /apis/build.openshift.io/v1/namespaces/ebilieriteste/builds/grocery-shop-quick-buy-git-3
+  resourceVersion: '118947617'
+  name: grocery-shop-quick-buy-git-3
+  uid: 142e6ee3-de3e-4a0f-b18e-bf5a98d0ab70
+  creationTimestamp: '2020-02-07T14:51:11Z'
+  namespace: ebilieriteste
+  ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      kind: BuildConfig
+      name: grocery-shop-quick-buy-git
+      uid: 95e1afd2-f26b-43a7-8703-1c2831fb49a4
+      controller: true
+  labels:
+    app: grocery-shop-quick-buy-git
+    app.kubernetes.io/part-of: grocery-shop-quick-buy-git-app
+    app.kubernetes.io/instance: grocery-shop-quick-buy-git
+    openshift.io/build-config.name: grocery-shop-quick-buy-git
+    app.kubernetes.io/component: grocery-shop-quick-buy-git
+    openshift.io/build.start-policy: Serial
+    buildconfig: grocery-shop-quick-buy-git
+    app.openshift.io/runtime: dotnet
+    app.kubernetes.io/name: dotnet
+    app.openshift.io/runtime-version: '2.2'
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'grocery-shop-quick-buy-git:latest'
+    pushSecret:
+      name: builder-dockercfg-ktd5z
+  resources: {}
+  triggeredBy:
+    - message: Manually triggered
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: DockerImage
+        name: >-
+          image-registry.openshift-image-registry.svc:5000/openshift/dotnet@sha256:73237ba08fab93d93075551a95b9e0047e765b0285d98d2fbffb9bbd691c4512
+      pullSecret:
+        name: builder-dockercfg-ktd5z
+  postCommit: {}
+  serviceAccount: builder
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/ebilieri/GroceryShop.QuickBuy.git'
+    contextDir: /
+  revision:
+    type: Git
+    git:
+      commit: 3a523d0736dc4aca95c932f21e6ce7ad1b20efb9
+      author:
+        name: Emerson Bilieri Claudelino
+        email: ebilieri@gmail.com
+      committer:
+        name: Emerson Bilieri Claudelino
+        email: ebilieri@gmail.com
+      message: ajuste modifieds
+status:
+  phase: Running
+  startTimestamp: '2020-02-07T14:51:12Z'
+  outputDockerImageReference: >-
+    image-registry.openshift-image-registry.svc:5000/ebilieriteste/grocery-shop-quick-buy-git:latest
+  config:
+    kind: BuildConfig
+    namespace: ebilieriteste
+    name: grocery-shop-quick-buy-git
+  output: {}
+  stages:
+    - name: FetchInputs
+      startTime: '2020-02-07T14:51:20Z'
+      durationMilliseconds: 625
+      steps:
+        - name: FetchGitSource
+          startTime: '2020-02-07T14:51:20Z'
+          durationMilliseconds: 625
