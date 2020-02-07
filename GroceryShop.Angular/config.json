@@ -1,5 +1,0 @@
-{
-  "ConnectionStrings": {
-    "QuickByConnection": "server=localhostXXX;userid=root;password=mysql@2019;database=QuickBuyAngularDB"
-  }
-}
